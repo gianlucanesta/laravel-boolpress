@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <h1>Ciao sono la dashboard</h1>
+    <h1>Benvenuto <strong>{{ $user->name}}</strong> nell'area di amministrazione</h1>
 @endsection
