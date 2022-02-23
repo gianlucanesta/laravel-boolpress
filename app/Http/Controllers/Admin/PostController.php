@@ -32,7 +32,14 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        // $post = Post::findOrfail($id);
+        // dd($post);
+        
+        // $data = [
+        //     'post' => $post
+        // ];
+
+        return view('admin.posts.create');
     }
 
     /**
@@ -43,7 +50,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+
+        // dd($form_data);
     }
 
     /**
@@ -56,7 +65,7 @@ class PostController extends Controller
     {
         $post = Post::findOrfail($id);
         // dd($post);
-        
+
         $data = [
             'post' => $post
         ];
