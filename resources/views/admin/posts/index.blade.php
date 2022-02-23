@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <div class="container">
+        <div>
             <h1>Lista dei Post</h1>
 
             <div class="row row-cols-3">
@@ -13,7 +13,7 @@
                             <div class="card-body">
                                 <h5 class="card-title font-weight-bold">{{ $post->title }}</h5>
                                 <p class="card-text">{{ Str::substr($post->content, 0, 100)}}...</p>
-                                <a href="#" class="btn btn-primary">Leggi di più</a>
+                                <a href="{{ route('admin.posts.show', ['post' => $post->id])}}" class="btn btn-primary">Leggi di più</a>
                             </div>
                         </div>
                     </div>

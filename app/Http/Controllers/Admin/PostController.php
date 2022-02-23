@@ -54,7 +54,14 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrfail($id);
+        // dd($post);
+        
+        $data = [
+            'post' => $post
+        ];
+
+        return view('admin.posts.show', $data);
     }
 
     /**
