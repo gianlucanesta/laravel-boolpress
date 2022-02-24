@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Str;
+
 
 class PostController extends Controller
 {
@@ -53,6 +55,16 @@ class PostController extends Controller
         $form_data = $request->all();
 
         // dd($form_data);
+
+        $request->validate($this->getValidationRules());
+
+        $new_post = new Post();
+        $new_post->fill($form_data);
+        $new_post->slug = Str::slug($form_data['title']);
+        // dd($new_post);
+        $new_post->save();
+
+        return redirect()->route('admin.posts.show', ['post' => $new_post->id]);
     }
 
     /**
@@ -105,5 +117,12 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function getValidationRules() {
+        return [
+            'title' => 'required|max:255',
+            'content' => 'required|max:60000'
+        ];
     }
 }
