@@ -60,8 +60,14 @@ class PostController extends Controller
 
         $new_post = new Post();
         $new_post->fill($form_data);
-        $new_post->slug = Str::slug($form_data['title']);
+        // $new_post->slug = Str::slug($form_data['title']);
         // dd($new_post);
+
+        
+        // dd($is_post_found);
+
+        $new_post->slug = $this->getUniqueSlugFromTitle($form_data['title']);
+        
         $new_post->save();
 
         return redirect()->route('admin.posts.show', ['post' => $new_post->id]);
@@ -124,5 +130,24 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'content' => 'required|max:60000'
         ];
+    }
+
+    protected function getUniqueSlugFromTitle($title) {
+        // Assegno uno slug base al titolo
+        $slug = Str::slug($title);
+        $slug_base = $slug;
+
+        // Verifico presenza del post ed eventualmente prendo il primo
+        $is_post_found = Post::where('slug', '=', $slug)->first();
+        $counter = 1;
+
+        while($is_post_found) {
+            $slug = $slug_base . '-' . $counter;
+            // dd($slug);
+            $is_post_found = Post::where('slug', '=', $slug)->first();
+            $counter++;
+        }
+
+        return $slug;
     }
 }
