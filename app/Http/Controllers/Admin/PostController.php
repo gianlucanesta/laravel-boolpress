@@ -99,7 +99,13 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $data = [
+            'post' => $post
+        ];
+
+        return view('admin.posts.edit', $data);
     }
 
     /**
@@ -111,7 +117,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $form_data = $request->all();
+        $request->validate($this->getValidationRules());
+
+        // dd($form_data);
+        $post = Post::findOrFail($id);
+        // dd($post);
+
+        // Aggiorno lo slug solo se l'utente cambia il titolo 
+        if($form_data['slug'] != $post->title){
+            $form_data['slug'] = $this->getUniqueSlugFromTitle($form_data['title']); 
+        }
+
+        $post->update($form_data);
+
+        return redirect()->route('admin.posts.show', ['post' => $id]);
     }
 
     /**
@@ -122,7 +142,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        // dd($post);
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 
     protected function getValidationRules() {
