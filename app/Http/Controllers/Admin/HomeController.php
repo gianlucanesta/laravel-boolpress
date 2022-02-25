@@ -17,7 +17,9 @@ class HomeController extends Controller
 
 
         $data = [
-            'user' => $user
+            'user' => $user,
+            'userInfo' => $user->userInfo
+
         ];
 
 
