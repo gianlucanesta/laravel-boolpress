@@ -10,7 +10,11 @@ class HomeController extends Controller
 {
     public function index() {
         $user = Auth::user();
+        
         // dd($user);
+        // dd($user->userInfo);
+        // dd($user->userInfo->phone);
+
 
         $data = [
             'user' => $user
