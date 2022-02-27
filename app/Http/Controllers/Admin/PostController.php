@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 use Illuminate\Support\Str;
 
 
@@ -34,14 +35,18 @@ class PostController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
+
+
         // $post = Post::findOrfail($id);
         // dd($post);
         
-        // $data = [
-        //     'post' => $post
-        // ];
+        $data = [
+            'categories' => $categories
+            // 'post' => $post
+        ];
 
-        return view('admin.posts.create');
+        return view('admin.posts.create', $data);
     }
 
     /**
@@ -54,16 +59,17 @@ class PostController extends Controller
     {
         $form_data = $request->all();
 
+        // TEST
         // dd($form_data);
 
         $request->validate($this->getValidationRules());
 
         $new_post = new Post();
         $new_post->fill($form_data);
-        // $new_post->slug = Str::slug($form_data['title']);
-        // dd($new_post);
 
-        
+        // TEST
+        // $new_post->slug = Str::slug($form_data['title']);
+        // dd($new_post);       
         // dd($is_post_found);
 
         $new_post->slug = Post::getUniqueSlugFromTitle($form_data['title']);
@@ -82,7 +88,12 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrfail($id);
+        
+        // TEST
         // dd($post);
+        // dd($post->category);
+        // $category = $post->category;
+        // dd($category->posts);
 
         $data = [
             'post' => $post
