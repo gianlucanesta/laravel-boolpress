@@ -95,6 +95,15 @@ class PostController extends Controller
         // $category = $post->category;
         // dd($category->posts);
 
+		// $tags_test = $post->tags;    // prendo la collection dei tags presenti nel post
+        // dd($tags_test); 
+        
+        // $tags_test = $post->tags;
+		// $tag = $tags_test[0];    // prendo il primo tag presente nel post
+		// dd($tag->posts);        
+        // END TEST
+
+
         $data = [
             'post' => $post
         ];
