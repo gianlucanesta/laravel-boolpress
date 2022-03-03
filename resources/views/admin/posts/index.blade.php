@@ -19,6 +19,8 @@
                     </div>
                 @endforeach
             </div>
+
+            <div class="mt-3">{{ $posts->links()}}</div>
         </div>
     </section>
 @endsection

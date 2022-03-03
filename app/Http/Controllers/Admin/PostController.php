@@ -19,7 +19,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::paginate(6);
         // dd($posts);
 
         $data = [
@@ -182,6 +183,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
+        $post ->tags()->sync([]);
+
         // dd($post);
         $post->delete();
 

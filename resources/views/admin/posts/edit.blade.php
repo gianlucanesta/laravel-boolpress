@@ -4,7 +4,7 @@
     <h1>Modifica Post</h1>
 
     
-    @if ($errors->any())
+    {{-- @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -12,17 +12,23 @@
                 @endforeach
             </ul>
         </div>
-    @endif
+    @endif --}}
 
     <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post">
         @csrf
         @method('PUT')
-
+        
+        @error('title')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
             <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $post->title) }}">
         </div>
 
+        @error('category_id')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <div class="mb-3">
             <label for="category_id" class="form-label">Categoria</label>
             <select class="form-select" name="category_id" id="category_id">
@@ -35,6 +41,9 @@
             </select>
         </div>
 
+        @error('Tags')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <div class="mb-3">
             <p class="mb-1">Tags</p>
         
@@ -58,6 +67,9 @@
             
         </div>
 
+        @error('content')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <div class="mb-3">
             <label for="content" class="form-label">Contenuto</label>
             <textarea name="content" class="form-control"  id="content" cols="30" rows="10">{{ old('content', $post->content) }}</textarea>
