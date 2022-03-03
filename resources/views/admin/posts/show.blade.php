@@ -8,6 +8,15 @@
    
    <div class="mb-3"><strong>Categoria:</strong> {{ $post->category ? $post->category->name : 'nessuna'}}</div>
 
+   <div class="mb-2"><strong>Tags:</strong>
+      @forelse($post->tags as $tag)
+         {{-- {{ dd($tag )}} --}}
+         {{ $tag->name }} {{ $loop->last ? '' : ', '}}
+      @empty
+         Nessuno
+      @endforelse			
+   </div>		
+
    <p>{{ $post->content }}</p>
 
    <form action="{{ route('admin.posts.edit', ['post' => $post->id])}}">
