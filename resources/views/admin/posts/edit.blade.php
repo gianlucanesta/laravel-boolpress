@@ -36,6 +36,29 @@
         </div>
 
         <div class="mb-3">
+            <p class="mb-1">Tags</p>
+        
+            {{-- {{ dd($tags) }}  --}}
+            {{-- {{ dd($post->tags) }}  --}}
+            @foreach($tags as $tag)
+            <div class="form-check">
+    			@if ($errors->any())
+    				{{-- Se ci sono errori di validazioni decido se mettere checked o meno in base al valore old contenuto in un array--}}
+    				<input {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }} class="form-check-input" name="tags[]" type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
+    			@else
+    				{{-- Altrimenti metto checked in base a $post->tags->contains che è una collection--}}
+    				<input {{ $post->tags->contains($tag) ? 'checked' : '' }} class="form-check-input" name="tags[]" type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
+                @endif
+                <input {{ $post->tags->contains($tag) ? 'checked' : '' }} class="form-check-input" name="tags[]" type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
+                <label class="form-check-label" for="tag-{{ $tag->id }}">
+                {{ $tag->name}}
+                </label>
+            </div>
+        @endforeach
+            
+        </div>
+
+        <div class="mb-3">
             <label for="content" class="form-label">Contenuto</label>
             <textarea name="content" class="form-control"  id="content" cols="30" rows="10">{{ old('content', $post->content) }}</textarea>
         </div>

@@ -38,7 +38,7 @@
             </div>
 
             <div class="mb-3">
-                <h4> Tags </h4>
+                <p class="mb-1">Tags</p>
             
                 {{-- {{ dd($tags) }} <-- deve tornarmi una collection --}}
                 {{-- {{ dd( old('tags')) }} <-- deve tornarmi null oppure un array se la checkbox è selezionata  --}}
