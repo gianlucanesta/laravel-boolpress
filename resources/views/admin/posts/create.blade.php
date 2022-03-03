@@ -41,10 +41,12 @@
                 <h4> Tags </h4>
             
                 {{-- {{ dd($tags) }} <-- deve tornarmi una collection --}}
-            
+                {{-- {{ dd( old('tags')) }} <-- deve tornarmi null oppure un array se la checkbox è selezionata  --}}
+                
                 @foreach($tags as $tag)
                     <div class="form-check">
-                        <input class="form-check-input" name="tags[]" type="checkbox" value="{{$tag->id}}" id="tag-{{$tag->id}}">
+                        {{-- Per ogni tag stampato in checkbox che si trova nell'array old metto checked altrimenti stringa vuota --}}
+			            <input {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }} class="form-check-input" name="tags[]" type="checkbox" value="{{$tag->id}}" id="tag-{{$tag->id}}">
                         <label class="form-check-label" for="tag-{{$tag->id}}">
                         {{ $tag->name}}
                         </label>
