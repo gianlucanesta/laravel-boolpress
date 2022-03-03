@@ -34,8 +34,22 @@
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : ''}}>{{ $category->name }}</option>
                     @endforeach
-
                 </select>
+            </div>
+
+            <div class="mb-3">
+                <h4> Tags </h4>
+            
+                {{-- {{ dd($tags) }} <-- deve tornarmi una collection --}}
+            
+                @foreach($tags as $tag)
+                    <div class="form-check">
+                        <input class="form-check-input" name="tags[]" type="checkbox" value="{{$tag->id}}" id="tag-{{$tag->id}}">
+                        <label class="form-check-label" for="tag-{{$tag->id}}">
+                        {{ $tag->name}}
+                        </label>
+                    </div>
+                @endforeach
             </div>
 
 
