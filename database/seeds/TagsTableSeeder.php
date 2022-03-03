@@ -12,9 +12,7 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        $tags = [
-            'carne', 'pesce', 'vegetariano', 'piatto veloce'
-        ];
+        $tags = ['carne', 'pesce', 'vegetariano', 'piatto veloce'];
 
         foreach($tags as $tag) {
             $new_tag = new Tag();

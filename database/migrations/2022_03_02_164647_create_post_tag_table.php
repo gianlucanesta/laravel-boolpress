@@ -17,13 +17,13 @@ class CreatePostTagTable extends Migration
             //Posts Foreign Key
             $table->unsignedBigInteger('post_id');
             $table->foreign('post_id')
-                ->references();
+                ->references('id')
                 ->on('posts');
     
             //Tags Foreign Key
             $table->unsignedBigInteger('tag_id');
             $table->foreign('tag_id')
-                    ->references();
+                    ->references('id')
                     ->on('tags');
             
             //Better Indexing Performances
