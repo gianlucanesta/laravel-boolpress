@@ -2,19 +2,20 @@
 	<section>
 		<div class="container">
 			<h1> I nostri post </h1>
-		</div>
-		<div class="row row-cols-3">
-			
-			<!-- Single post card -->
-			<!-- <div v-for="post in posts":key="post.id" class="col">
-				<div class="card my-2" style="width: 18rem;">
-					<div class="card-body">
-						<h5 class="card-title">{{ post.title }} </h5>
-						<p class="card-text">{{ truncateText(post.content, 50) }}</p>
-					</div>
-				</div>
-			</div> -->
-			<!-- End Single post card -->
+
+            <div class="row row-cols-3">
+                <!-- Single post card -->
+                <div v-for="post in posts" :key="post.id" class="col">
+                    <div class="card my-2" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.title }} </h5>
+                            <p class="card-text">{{ truncateText(post.content, 50) }}</p>
+                            <!-- <p class="card-text">{{ post.content }}</p> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single post card -->
+            </div>
 		</div>
 	</section>
 </template>
@@ -38,12 +39,19 @@
 				// console.log(response);
                     this.posts = response.data.results;
 				});
-			}
-        },
+			},
+            truncateText: function(text, maxCharsNumber) {
+        	//prendo un testo e se è piu lungo di x caratteri lo taglio e ci aggiungo ...
+        	// console.log('text');
 
+        	if(text.length > maxCharsNumber) {
+        		return text.substr(0, maxCharsNumber) + '...';
+        	}
+        	return text;
+            }
+        },
         created: function() {
             this.getPosts();
-        }
-		
+        }	
     }
 </script>

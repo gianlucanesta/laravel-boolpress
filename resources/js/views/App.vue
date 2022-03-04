@@ -4,6 +4,8 @@
 
 
 <script>
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 import Posts from '../components/Posts.vue';
 
