@@ -8,9 +8,11 @@ use App\Post;
 
 class PostController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         // dd('tornare tutti i post in formato json');
-        $posts = Post::all();
+        // $posts = Post::all();
+        // dd($request->all());
+        $posts = Post::paginate(9);
 
         // dd($posts); //ottengo una collection di tutti i post
 
