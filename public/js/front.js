@@ -1951,7 +1951,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     truncateText: function truncateText(text, maxCharsNumber) {
       //prendo un testo e se è piu lungo di x caratteri lo taglio e ci aggiungo ...
-      // console.log('text');
+      // console.log(text);
       if (text.length > maxCharsNumber) {
         return text.substr(0, maxCharsNumber) + '...';
       }
@@ -16674,21 +16674,17 @@ var render = function () {
         { staticClass: "row row-cols-3" },
         _vm._l(_vm.posts, function (post) {
           return _c("div", { key: post.id, staticClass: "col" }, [
-            _c(
-              "div",
-              { staticClass: "card my-2", staticStyle: { width: "18rem" } },
-              [
-                _c("div", { staticClass: "card-body" }, [
-                  _c("h5", { staticClass: "card-title" }, [
-                    _vm._v(_vm._s(post.title) + " "),
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v(_vm._s(_vm.truncateText(post.content, 50))),
-                  ]),
+            _c("div", { staticClass: "card my-2" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h5", { staticClass: "card-title" }, [
+                  _vm._v(_vm._s(post.title) + " "),
                 ]),
-              ]
-            ),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(_vm._s(_vm.truncateText(post.content, 50))),
+                ]),
+              ]),
+            ]),
           ])
         }),
         0

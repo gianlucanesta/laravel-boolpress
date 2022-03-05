@@ -6,7 +6,7 @@
             <div class="row row-cols-3">
                 <!-- Single post card -->
                 <div v-for="post in posts" :key="post.id" class="col">
-                    <div class="card my-2" style="width: 18rem;">
+                    <div class="card my-2">
                         <div class="card-body">
                             <h5 class="card-title">{{ post.title }} </h5>
                             <p class="card-text">{{ truncateText(post.content, 50) }}</p>
@@ -42,14 +42,14 @@
 			},
             truncateText: function(text, maxCharsNumber) {
         	//prendo un testo e se è piu lungo di x caratteri lo taglio e ci aggiungo ...
-        	// console.log('text');
+        	// console.log(text);
 
         	if(text.length > maxCharsNumber) {
         		return text.substr(0, maxCharsNumber) + '...';
         	}
-        	return text;
+        		return text;
             }
-        },
+		},
         created: function() {
             this.getPosts();
         }	
