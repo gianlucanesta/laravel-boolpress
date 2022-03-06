@@ -5,6 +5,9 @@
 
     import Home from './pages/Home.vue'
     import About from './pages/About.vue'
+    import Blog from './pages/Blog.vue'
+    import NotFound from './pages/NotFound.vue'
+
 
 
     const router = new VueRouter({
@@ -19,6 +22,16 @@
                 path: "/about",
                 name: "about",
                 component: About
+            },
+            {
+                path: "/blog",
+                name: "blog",
+                component: Blog
+            },
+            {
+                path: "/*",
+                name: "not-found",
+                component: NotFound
             },
         ]
     });
