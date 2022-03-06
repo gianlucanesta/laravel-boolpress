@@ -1,5 +1,11 @@
 <template>
-  <Posts />
+    <div>
+      <!-- <Posts /> -->
+      
+      <main>
+        <router-view></router-view>
+      </main>
+    </div> 
 </template>
 
 
@@ -7,13 +13,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
-import Posts from '../components/Posts.vue';
-
+// import Posts from '../components/Posts.vue';
 export default {
     name: 'App',
-    components: {
-        Posts
-    }
+    // components: {
+        // Posts
+    // }
    
 }
 </script>
