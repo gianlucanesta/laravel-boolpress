@@ -4,6 +4,9 @@
             <h5 class="card-title">{{ postDetails.title }} </h5>
             <p class="card-text">{{ truncateText(postDetails.content, 50) }}</p>
             <!-- <p class="card-text">{{ postDetails.content }}</p> -->
+            <div class="card-body">
+                <router-link :to="{ name: 'post-details', params: { slug:postDetails.slug } }">Leggi articolo</router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -11,6 +14,11 @@
 <script>
     export default {
         name: 'PostCard',
+        data: function() {
+            return {
+                post : {}
+            };
+        },
         props: {
             postDetails: Object
         },
@@ -25,5 +33,6 @@
                 return text;
             }
         }
+        
     }
 </script>
