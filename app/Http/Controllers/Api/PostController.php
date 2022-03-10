@@ -27,20 +27,20 @@ class PostController extends Controller
     }
 
     public function show($slug) {
-		dd($slug);
-		// $post = Post::where('slug', '=', $slug)->with(['category', 'tags'])->first();
+		// dd($slug);
+		$post = Post::where('slug', '=', $slug)->with(['category', 'tags'])->first();
 		// dd($post);
 
-        // if($post) {
-        //     return response()->json([
-        //         'success' => true,
-        //         'results' => $post
-        //     ]);
-        // } else {
-        //     return response()->json([
-        //         'success' => false,
-        //         'results' => []
-        //     ]);
-        // }
+        if($post) {
+            return response()->json([
+                'success' => true,
+                'results' => $post
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'results' => []
+            ]);
+        }
     }
 }

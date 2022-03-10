@@ -2249,8 +2249,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostDetails',
   data: function data() {
@@ -2278,7 +2276,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     // console.log(this.$route.name)
     // console.log(this.$route.params)
-    // console.log(this.$route.params.slug)
+    console.log(this.$route.params.slug);
     this.getPost();
   }
 });
@@ -17505,24 +17503,17 @@ var render = function () {
     _vm.post.tags && _vm.post.tags.length > 0
       ? _c(
           "div",
-          _vm._l(_vm.tag.posts, function (post) {
+          _vm._l(_vm.post.tags, function (tag) {
             return _c(
-              "router-link",
+              "span",
               {
-                key: post.id,
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  to: { name: "post-details", params: { slug: post.slug } },
-                },
+                key: tag.id,
+                staticClass: "badge bg-warning text-dark mx-1 text-capitalize",
               },
-              [
-                _vm._v(
-                  "\n                " + _vm._s(post.title) + "\n            "
-                ),
-              ]
+              [_vm._v(" \n            " + _vm._s(tag.name) + "\n        ")]
             )
           }),
-          1
+          0
         )
       : _vm._e(),
     _vm._v(" "),

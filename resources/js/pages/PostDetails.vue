@@ -4,14 +4,12 @@
         <div v-if="post.category">Category: {{ post.category.name }}</div>
         
         <div v-if="post.tags && post.tags.length > 0">
-                <router-link 
-                    v-for="post in tag.posts" 
-                    :key="post.id" 
-                    class="list-group-item list-group-item-action" 
-                    :to="{ name: 'post-details', params: { slug: post.slug } }"
-                >
-                    {{ post.title }}
-                </router-link>
+            <span 
+                v-for="tag in post.tags" 
+                :key="tag.id" 
+                class="badge bg-warning text-dark mx-1 text-capitalize"> 
+                {{ tag.name }}
+            </span>
         </div>
         
         <p> {{ post.content }} </p>
@@ -43,7 +41,7 @@ export default {
     created: function() {
             // console.log(this.$route.name)
             // console.log(this.$route.params)
-            // console.log(this.$route.params.slug)
+            console.log(this.$route.params.slug)
             this.getPost();
     }
 }
