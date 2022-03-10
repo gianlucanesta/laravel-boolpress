@@ -4,7 +4,7 @@
             <h1>Tag: {{ tag.name }}</h1>
 
             <h2>Ricette correlate</h2>
-            <div class="list-group">
+            <div class="list-group mt-3">
                 <router-link 
                     v-for="post in tag.posts" 
                     :key="post.id" 

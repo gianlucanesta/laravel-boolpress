@@ -4,12 +4,14 @@
         <div v-if="post.category">Category: {{ post.category.name }}</div>
         
         <div v-if="post.tags && post.tags.length > 0">
-            <span 
+            <router-link 
                 v-for="tag in post.tags" 
                 :key="tag.id" 
-                class="badge bg-warning text-dark mx-1 text-capitalize"> 
+                class="badge bg-warning text-dark mx-1 text-capitalize"
+                :to="{ name: 'tag-details', params: { slug: tag.slug }}"
+                > 
                 {{ tag.name }}
-            </span>
+            </router-link>
         </div>
         
         <p> {{ post.content }} </p>

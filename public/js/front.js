@@ -2248,6 +2248,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostDetails',
   data: function data() {
@@ -17501,15 +17503,18 @@ var render = function () {
           "div",
           _vm._l(_vm.post.tags, function (tag) {
             return _c(
-              "span",
+              "router-link",
               {
                 key: tag.id,
                 staticClass: "badge bg-warning text-dark mx-1 text-capitalize",
+                attrs: {
+                  to: { name: "tag-details", params: { slug: tag.slug } },
+                },
               },
               [_vm._v(" \n            " + _vm._s(tag.name) + "\n        ")]
             )
           }),
-          0
+          1
         )
       : _vm._e(),
     _vm._v(" "),
@@ -17546,7 +17551,7 @@ var render = function () {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "list-group" },
+        { staticClass: "list-group mt-3" },
         _vm._l(_vm.tag.posts, function (post) {
           return _c(
             "router-link",
