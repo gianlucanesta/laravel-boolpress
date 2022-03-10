@@ -9,9 +9,8 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li v-for="(link, index) in menuLinks" :key="index" class="nav-item">
-                            <router-link class="nav-link active" aria-current="page" :to="{ name: link.name}">{{ link.label }}</router-link>
+                            <router-link class="nav-link active"  :to="{ name: link.name}">{{ link.label }}</router-link>
                         </li>
-                        
                     </ul>
                 </div>
             </div>

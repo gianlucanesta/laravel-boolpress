@@ -1928,7 +1928,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Header',
   data: function data() {
@@ -17071,10 +17070,7 @@ var render = function () {
                         "router-link",
                         {
                           staticClass: "nav-link active",
-                          attrs: {
-                            "aria-current": "page",
-                            to: { name: link.name },
-                          },
+                          attrs: { to: { name: link.name } },
                         },
                         [_vm._v(_vm._s(link.label))]
                       ),
