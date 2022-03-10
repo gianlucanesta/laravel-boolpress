@@ -22,7 +22,6 @@ export default {
         // Posts
         Header
     }
-   
 }
 </script>
 
