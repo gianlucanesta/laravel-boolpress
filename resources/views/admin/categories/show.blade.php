@@ -5,9 +5,9 @@
         <h1>
             {{ $category->name }}
         </h1>
-        <ul>
+        <ul  class="list-group">
             @forelse ($posts as $post)
-                <li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
                     <a href="{{ route('admin.posts.show', ['post' => $post->id])}}">{{ $post->title }}</a>
                 </li>
             @empty

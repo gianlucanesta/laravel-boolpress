@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="container">
-            <h1>Lista Tags</h1>
+            <h1 class="mt-3 mb-5">Lista Tags</h1>
 
             <ul class="list-group">
                 <li v-for="tag in tags" :key="tag.id" class="list-group-item d-flex justify-content-between align-items-center">

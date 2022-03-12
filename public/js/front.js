@@ -17652,7 +17652,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("section", [
     _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("Lista Tags")]),
+      _c("h1", { staticClass: "mt-3 mb-5" }, [_vm._v("Lista Tags")]),
       _vm._v(" "),
       _c(
         "ul",
