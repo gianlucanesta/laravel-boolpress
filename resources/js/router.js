@@ -8,6 +8,7 @@
     import Blog from './pages/Blog.vue'
     import PostDetails from './pages/PostDetails.vue'
     import TagDetails from './pages/TagDetails.vue'
+    import TagsList from './pages/TagsList.vue';
     import NotFound from './pages/NotFound.vue'
 
 
@@ -34,6 +35,11 @@
                 path: "/blog/:slug",
                 name: "post-details",
                 component: PostDetails
+            },
+            {
+                path: "/tags",
+                name: "tags-list",
+                component: TagsList
             },
             {
                 path: "/tags/:slug",

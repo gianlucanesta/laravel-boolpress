@@ -14,7 +14,7 @@
             </router-link>
         </div>
         
-        <p> {{ post.content }} </p>
+        <p>{{ post.content }}</p>
     </div>
 </template>
 
