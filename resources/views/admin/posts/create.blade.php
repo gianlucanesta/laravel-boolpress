@@ -21,17 +21,16 @@
             @csrf
             @method('POST')
 
-            @error('title')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
+
             <div class="mb-3">
                 <label for="title" class="form-label">Titolo</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
             </div>
-            
-            @error('category_id')
+            @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+            
+
             <div class="mb-3">
                 <label for="category_id" class="form-label">Categoria</label>
                 <select class="form-select" name="category_id" id="category_id">
@@ -42,10 +41,11 @@
                     @endforeach
                 </select>
             </div>
-
-            @error('Tags')
+            @error('category_id')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+
+
             <div class="mb-3">
                 <p class="mb-1">Tags</p>
             
@@ -62,26 +62,25 @@
                     </div>
                 @endforeach
             </div>
-
-            @error('content')
+            @error('Tags')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+
             <div class="mb-3">
                 <label for="content" class="form-label">Contenuto</label>
                 <textarea name="content" class="form-control"  id="content" cols="30" rows="10">{{ old('content') }}</textarea>
             </div>
-
-
             @error('content')
-            <div class="alert alert-danger">{{ $message }}</div>
+                <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
                 <input type="file" id="image" name="image">
             </div>
-
-
+            @error('image')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
 
             <button type="submit" class="btn btn-primary">Invia</button>
         </form>

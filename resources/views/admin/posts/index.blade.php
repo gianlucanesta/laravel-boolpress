@@ -13,7 +13,7 @@
                                 <div>
                                     <img src="{{ asset('storage/' .  $post->cover)}}" alt="{{ $post->title}}" class="card-img-top">
                                 </div>
-                            @endifs 
+                            @endif 
                             <div class="card-body">
                                 <h5 class="card-title font-weight-bold">{{ $post->title }}</h5>
                                 <p class="card-text">{{ Str::substr($post->content, 0, 100)}}...</p>
