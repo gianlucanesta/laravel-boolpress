@@ -14,21 +14,19 @@
         </div>
     @endif --}}
 
-    <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post">
+    <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         
-        @error('title')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
             <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $post->title) }}">
         </div>
-
-        @error('category_id')
+        @error('title')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+
         <div class="mb-3">
             <label for="category_id" class="form-label">Categoria</label>
             <select class="form-select" name="category_id" id="category_id">
@@ -40,40 +38,55 @@
 
             </select>
         </div>
-
-        @error('Tags')
+        @error('category_id')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+
         <div class="mb-3">
             <p class="mb-1">Tags</p>
         
             {{-- {{ dd($tags) }}  --}}
             {{-- {{ dd($post->tags) }}  --}}
             @foreach($tags as $tag)
-            <div class="form-check">
-    			@if ($errors->any())
-    				{{-- Se ci sono errori di validazioni decido se mettere checked o meno in base al valore old contenuto in un array--}}
-    				<input {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }} class="form-check-input" name="tags[]" type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
-    			@else
-    				{{-- Altrimenti metto checked in base a $post->tags->contains che è una collection--}}
-    				<input {{ $post->tags->contains($tag) ? 'checked' : '' }} class="form-check-input" name="tags[]" type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
-                @endif
-                <input {{ $post->tags->contains($tag) ? 'checked' : '' }} class="form-check-input" name="tags[]" type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
-                <label class="form-check-label" for="tag-{{ $tag->id }}">
-                {{ $tag->name}}
-                </label>
-            </div>
-        @endforeach
-            
+                <div class="form-check">
+                    @if ($errors->any())
+                        {{-- Se ci sono errori di validazioni decido se mettere checked o meno in base al valore old contenuto in un array--}}
+                        <input {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }} class="form-check-input" name="tags[]" type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
+                    @else
+                        {{-- Altrimenti metto checked in base a $post->tags->contains che è una collection--}}
+                        <input {{ $post->tags->contains($tag) ? 'checked' : '' }} class="form-check-input" name="tags[]" type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
+                    @endif
+                    <input {{ $post->tags->contains($tag) ? 'checked' : '' }} class="form-check-input" name="tags[]" type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
+                    <label class="form-check-label" for="tag-{{ $tag->id }}">
+                    {{ $tag->name}}
+                    </label>
+                </div>
+            @endforeach 
         </div>
-
-        @error('content')
+        @error('Tags')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+
         <div class="mb-3">
             <label for="content" class="form-label">Contenuto</label>
             <textarea name="content" class="form-control"  id="content" cols="30" rows="10">{{ old('content', $post->content) }}</textarea>
         </div>
+        @error('content')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" id="image" name="image">
+        </div>
+        
+        @if ($post->cover)
+            <div class="current-image">
+                Immagine attuale: 
+                <img src="{{ asset('storage/' . $post->cover) }}" alt="">
+            </div>
+        @endif
+     
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 @endsection

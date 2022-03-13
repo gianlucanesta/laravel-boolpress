@@ -173,6 +173,19 @@ class PostController extends Controller
             $form_data['slug'] = Post::getUniqueSlugFromTitle($form_data['title']); 
         }
 
+        if($form_data['image']) {
+            //Cancello il file vecchio
+            if($post->cover) {
+                Storage::delete($post->cover);
+            }
+    
+            //Faccio l'upload del nuovo file
+            $img_path = Storage::put('post_covers', $form_data['image']);
+    
+            //Salvo nella colonna cover il path del nuovo file
+            $form_data['cover'] = $img_path;
+        }
+
         $post->update($form_data);
 
 		if(isset($form_data['tags'])) {
@@ -194,6 +207,10 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post ->tags()->sync([]);
+
+        if($post->cover) {
+            Storage::delete($post->cover);
+        }
 
         // dd($post);
         $post->delete();
