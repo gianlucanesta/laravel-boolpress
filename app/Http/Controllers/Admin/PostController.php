@@ -8,6 +8,7 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 
 class PostController extends Controller
@@ -78,6 +79,15 @@ class PostController extends Controller
 
         $new_post->slug = Post::getUniqueSlugFromTitle($form_data['title']);
         
+        if(isset($form_data['image'])) {
+            $img_path = Storage::put('post_covers', $form_data['image']);
+            // dd($img_path);
+
+            $new_post->cover = $img_path;
+        }
+
+
+
         $new_post->save();
 
         //Save tags relations
