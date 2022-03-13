@@ -14,7 +14,9 @@
             </router-link>
         </div>
         
-        <p>{{ post.content }}</p>
+        <img v-if="post.cover" :src="post.cover" class="card-img-top mt-3" alt="post.title">
+
+        <p class="mt-4">{{ post.content }}</p>
     </div>
 </template>
 

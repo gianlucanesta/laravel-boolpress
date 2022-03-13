@@ -1999,6 +1999,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostCard',
   data: function data() {
@@ -2236,6 +2237,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -17223,6 +17226,13 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card my-2" }, [
     _c("div", { staticClass: "card-body" }, [
+      _vm.postDetails.cover
+        ? _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: _vm.postDetails.cover, alt: "postDetails.title" },
+          })
+        : _vm._e(),
+      _vm._v(" "),
       _c("h5", { staticClass: "card-title" }, [
         _vm._v(_vm._s(_vm.postDetails.title) + " "),
       ]),
@@ -17572,7 +17582,14 @@ var render = function () {
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.post.content))]),
+    _vm.post.cover
+      ? _c("img", {
+          staticClass: "card-img-top mt-3",
+          attrs: { src: _vm.post.cover, alt: "post.title" },
+        })
+      : _vm._e(),
+    _vm._v(" "),
+    _c("p", { staticClass: "mt-4" }, [_vm._v(_vm._s(_vm.post.content))]),
   ])
 }
 var staticRenderFns = []

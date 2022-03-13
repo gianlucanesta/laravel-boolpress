@@ -1,6 +1,7 @@
 <template>
     <div class="card my-2">
         <div class="card-body">
+            <img v-if="postDetails.cover" :src="postDetails.cover" class="card-img-top" alt="postDetails.title">
             <h5 class="card-title">{{ postDetails.title }} </h5>
             <p class="card-text">{{ truncateText(postDetails.content, 50) }}</p>
             <!-- <p class="card-text">{{ postDetails.content }}</p> -->

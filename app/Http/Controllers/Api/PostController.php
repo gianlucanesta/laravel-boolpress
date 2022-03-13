@@ -14,6 +14,16 @@ class PostController extends Controller
         // dd($request->all());
         $posts = Post::paginate(9);
 
+        // $url = url('storage/' . $posts[0]->cover);
+	    // dd($url);
+
+        // Sovrascrivo l'attributo cover di ogni post con un url assoluto solo se $post->cover esiste                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+        foreach($posts as $post) {
+            if($post->cover){
+                $post->cover = url('storage/' . $post->cover);
+            }
+        }
+
         // dd($posts); //ottengo una collection di tutti i post
 
         // return response()->json($posts);
@@ -30,6 +40,10 @@ class PostController extends Controller
 		// dd($slug);
 		$post = Post::where('slug', '=', $slug)->with(['category', 'tags'])->first();
 		// dd($post);
+
+        if($post->cover) {
+            $post->cover = url('storage/' . $post->cover);
+        }
 
         if($post) {
             return response()->json([
