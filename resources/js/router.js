@@ -9,6 +9,7 @@
     import PostDetails from './pages/PostDetails.vue'
     import TagDetails from './pages/TagDetails.vue'
     import TagsList from './pages/TagsList.vue';
+    import Contacts from './pages/Contacts.vue';
     import NotFound from './pages/NotFound.vue'
 
 
@@ -45,6 +46,11 @@
                 path: "/tags/:slug",
                 name: "tag-details",
                 component: TagDetails
+            },
+            {
+                path: "/contacts",
+                name: "contacts",
+                component: Contacts
             },
             {
                 path: "/*",
